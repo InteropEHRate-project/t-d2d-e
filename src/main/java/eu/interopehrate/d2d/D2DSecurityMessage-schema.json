@@ -1,0 +1,89 @@
+{
+    "$id": "http://example.com/example.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "description": "The root schema of a D2DSecurityMessage",
+    "required": [
+        "header",
+        "operation",
+        "body"
+    ],
+    "type": "object",
+    "properties": {
+        "header": {
+            "$id": "#/properties/header",
+            "type": "object",
+            "title": "The header schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "timeStamp": "2021-07-26T14:13:13.553Z",
+                    "agent": "JRE 1.8.0_261 - Windows 10 10.0",
+                    "protocol": "D2D",
+                    "version": "1"
+                }
+            ],
+            "required": [
+                "timeStamp",
+                "agent",
+                "protocol",
+                "version"
+            ],
+            "properties": {
+                "timeStamp": {
+                    "$id": "#/properties/header/properties/timeStamp",
+                    "examples": [
+                        "2021-07-26T14:13:13.553Z"
+                    ],
+                    "type": "string"
+                },
+                "agent": {
+                    "$id": "#/properties/header/properties/agent",
+                    "description": "The agent that created the message",
+                    "examples": [
+                        "JRE 1.8.0_261 - Windows 10 10.0"
+                    ],
+                    "type": "string"
+                },
+                "protocol": {
+                    "$id": "#/properties/header/properties/protocol",
+                    "default": "D2D",
+                    "description": "The name of the used protocol.",
+                    "enum": [
+                        "D2D"
+                    ],
+                    "type": "string"
+                },
+                "version": {
+                    "$id": "#/properties/header/properties/version",
+                    "default": "1",
+                    "description": "version of the protocol used",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": true
+        },
+        "operation": {
+            "$id": "#/properties/operation",
+            "description": "The name of the operation under execution of the D2D security protocol",
+            "examples": [
+                "HELLO_SEHR"
+            ],
+            "enum": [
+                "HELLO_SEHR",
+                "HELLO_HCP",
+                "SEHR_PUBLIC_KEY",
+                "HCP_PUBLIC_KEY",
+                "UNSIGNED_CONSENT",
+                "SIGNED_CONSENT"
+            ],
+            "type": "string"
+        },
+        "body": {
+            "$id": "#/properties/body",
+            "description": "The body of the message contains the exchanged data",
+            "type": "string"
+        }
+    },
+    "additionalProperties": true
+}

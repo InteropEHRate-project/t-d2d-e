@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>eu.interopehrate</groupId>
+	<artifactId>sd2de</artifactId>
+	<version>0.3.8</version>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<!-- for nexus -->
+	<distributionManagement>
+		<repository>
+			<id>nexus</id>
+			<url>http://213.249.46.206:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<url>http://213.249.46.206:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+	<!-- new -->
+
+
+	<dependencies>
+		<dependency>
+			<groupId>io.ultreia</groupId>
+			<artifactId>bluecove</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+		<!-- This is the core HAPI library -->
+		<dependency>
+			<groupId>ca.uhn.hapi</groupId>
+			<artifactId>hapi-base</artifactId>
+			<version>2.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/ca.uhn.hapi.fhir/hapi-fhir-structures-r4 -->
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-structures-r4</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.ohmesoftware</groupId>
+			<artifactId>keytool</artifactId>
+			<version>0.0.2</version>
+		</dependency>
+
+		<!--  ...  -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>1.7.25</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+	
+		<dependency>
+		    <groupId>ca.uhn.hapi.fhir</groupId>
+		    <artifactId>hapi-fhir-validation-resources-r4</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>ca.uhn.hapi.fhir</groupId>
+		    <artifactId>hapi-fhir-validation</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.interopehrate</groupId>
+			<artifactId>emergencysec</artifactId>
+			<version>0.0.2</version>
+		</dependency>
+
+<!--		<dependency>
+			<groupId>eu.interopehrate</groupId>
+			<artifactId>emergencysec</artifactId>
+			<version>0.0.1</version>
+			<scope>system</scope>
+			<systemPath>D:/IntelijProjects/encryptedCommunication/target/emergencysec-0.0.1.jar</systemPath>
+		</dependency>-->
+		<!-- new -->
+		
+		<dependency>
+		    <groupId>eu.interopehrate</groupId>
+		    <artifactId>r2d-d2d-commons</artifactId>
+			<version>0.0.7</version>
+		</dependency>
+		
+		<dependency>
+       		<groupId>com.google.code.gson</groupId>
+       		<artifactId>gson</artifactId>
+       		<version>2.6.2</version>
+   		</dependency>
+		
+
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>iehr-project-repo</id>
+			<url>http://213.249.46.206:8081/repository/maven-releases/</url>
+		</repository>
+	</repositories>
+
+</project>

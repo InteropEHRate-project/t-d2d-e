@@ -1,0 +1,191 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "description": "JSON schema defining a D2DRequest",
+    "examples": [
+        {
+            "id": "ece6f044-addc-422d-8f48-7894f65d67ca",
+            "header": {
+                "itemsPerPage": 100,
+                "timeStamp": "2021-07-24T10:55:44.700Z",
+                "agent": "JRE 1.8.0_121 - Mac OS X 10.16",
+                "protocol": "D2D",
+                "version": "1"
+            },
+            "operation": "SEARCH",
+            "parameters": [
+                {
+                    "name": "CATEGORY",
+                    "value": "OBSERVATION"
+                },
+                {
+                    "name": "DATE",
+                    "value": "2021-07-24"
+                }
+            ]
+        }
+    ],
+    "required": [
+        "id",
+        "header",
+        "operation"
+    ],
+    "type": "object",
+    "properties": {
+        "id": {
+            "$id": "#/properties/id",
+            "default": "",
+            "type": "string"
+        },
+        "header": {
+            "$id": "#/properties/header",
+            "description": "Header of a D2DRequest, contains descriptive data about the request",
+            "examples": [
+                {
+                    "itemsPerPage": 100,
+                    "timeStamp": "2021-07-24T10:55:44.700Z",
+                    "agent": "JRE 1.8.0_121 - Mac OS X 10.16",
+                    "protocol": "D2D",
+                    "version": "1"
+                }
+            ],
+            "required": [
+                "itemsPerPage",
+                "timeStamp",
+                "agent",
+                "protocol",
+                "version"
+            ],
+            "type": "object",
+            "properties": {
+                "itemsPerPage": {
+                    "$id": "#/properties/header/properties/itemsPerPage",
+                    "default": 0,
+                    "description": "A non negative value states that the requestor is asking for a paged result and it is specifying how many items every page should contain",
+                    "examples": [
+                        100
+                    ],
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "$id": "#/properties/header/properties/timeStamp",
+                    "examples": [
+                        "2021-07-24T10:55:44.700Z"
+                    ],
+                    "type": "string"
+                },
+                "agent": {
+                    "$id": "#/properties/header/properties/agent",
+                    "examples": [
+                        "JRE 1.8.0_121 - Mac OS X 10.16"
+                    ],
+                    "type": "string"
+                },
+                "protocol": {
+                    "$id": "#/properties/header/properties/protocol",
+                    "default": "D2D",
+                    "examples": [
+                        "D2D"
+                    ],
+                    "enum": [
+                        "D2D"
+                    ],
+                    "type": "string"
+                },
+                "version": {
+                    "$id": "#/properties/header/properties/version",
+                    "default": "1",
+                    "examples": [
+                        "1"
+                    ],
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "operation": {
+            "$id": "#/properties/operation",
+            "default": "",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [
+                "SEARCH"
+            ],
+            "title": "The operation schema",
+            "enum": [
+                "SEARCH",
+                "READ",
+                "WRITE",
+                "CLOSE_CONNECTION"
+            ],
+            "type": "string"
+        },
+        "parameters": {
+            "$id": "#/properties/parameters",
+            "description": "Array of the parameters needed for the processing of the request",
+            "examples": [
+                [
+                    {
+                        "name": "CATEGORY",
+                        "value": "OBSERVATION"
+                    },
+                    {
+                        "name": "DATE",
+                        "value": "2021-07-24"
+                    }
+                ]
+            ],
+            "type": "array",
+            "additionalItems": false,
+            "items": {
+                "$id": "#/properties/parameters/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/parameters/items/anyOf/0",
+                        "description": "A parameter is composed by a couple of a name and a value.",
+                        "examples": [
+                            {
+                                "name": "CATEGORY",
+                                "value": "OBSERVATION"
+                            }
+                        ],
+                        "required": [
+                            "name",
+                            "value"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "$id": "#/properties/parameters/items/anyOf/0/properties/name",
+                                "description": "An explanation about the purpose of this instance.",
+                                "examples": [
+                                    "CATEGORY"
+                                ],
+                                "enum": [
+                                    "CATEGORY",
+                                    "SUB_CATEGORY",
+                                    "DATE",
+                                    "TYPE",
+                                    "SUMMARY",
+                                    "MOST_RECENT",
+                                    "ID"
+                                ],
+                                "type": "string"
+                            },
+                            "value": {
+                                "$id": "#/properties/parameters/items/anyOf/0/properties/value",
+                                "description": "The value of a parameter. In case it is a date it MUST  have this format 'YYYY-MM-DD', in case it is the CATEGORY parameter, it MUST contains on of the following value: 'PATIENT_SUMMARY', 'IMAGE_REPORT', 'LABORATORY_REPORT', 'PATIENT', 'DOCUMENT_REFERENCE', 'DOCUMENT_MANIFEST', 'DIAGNOSTIC_REPORT', 'MEDICATION_REQUEST', 'CONDITION', 'IMMUNIZATION', 'ALLERGY_INTOLERANCE', 'OBSERVATION', 'ENCOUNTER', 'COMPOSITION', 'PROCEDURE'",
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        },
+        "body": {
+            "$id": "#/properties/body",
+            "type": "string",
+            "description": "optional encrypted string containing health data sent to the S-EHR."
+        }
+    },
+    "additionalProperties": false
+}

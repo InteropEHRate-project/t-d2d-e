@@ -1,0 +1,148 @@
+{
+    "$id": "http://example.com/example.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "examples": [
+        {
+            "id": "bf0a4f17-62c6-4199-ba9e-55325794c138",
+            "header": {
+                "requestId": "21a67a11-524d-44ab-834b-936e13f14b28",
+                "page": 1,
+                "totalPages": 1,
+                "timeStamp": "2021-07-24T14:25:42.407Z",
+                "agent": "JRE 1.8.0_121 - Mac OS X 10.16",
+                "protocol": "D2D",
+                "version": "1"
+            },
+            "body": "encrypted body value",
+            "status": 200,
+            "message": "Successful"
+        }
+    ],
+    "required": [
+        "id",
+        "header",
+        "body",
+        "status"
+    ],
+    "type": "object",
+    "properties": {
+        "id": {
+            "$id": "#/properties/id",
+            "description": "Unique ID of the response",
+            "examples": [
+                "bf0a4f17-62c6-4199-ba9e-55325794c138"
+            ],
+            "type": "string"
+        },
+        "header": {
+            "$id": "#/properties/header",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [
+                {
+                    "requestId": "21a67a11-524d-44ab-834b-936e13f14b28",
+                    "page": 1,
+                    "totalPages": 1,
+                    "timeStamp": "2021-07-24T14:25:42.407Z",
+                    "agent": "JRE 1.8.0_121 - Mac OS X 10.16",
+                    "protocol": "D2D",
+                    "version": "1"
+                }
+            ],
+            "required": [
+                "requestId",
+                "page",
+                "totalPages",
+                "timeStamp",
+                "agent",
+                "protocol",
+                "version"
+            ],
+            "type": "object",
+            "properties": {
+                "requestId": {
+                    "$id": "#/properties/header/properties/requestId",
+                    "description": "ID of the request that generates this response",
+                    "examples": [
+                        "21a67a11-524d-44ab-834b-936e13f14b28"
+                    ],
+                    "type": "string"
+                },
+                "page": {
+                    "$id": "#/properties/header/properties/page",
+                    "default": 0,
+                    "description": "current page",
+                    "type": "integer"
+                },
+                "totalPages": {
+                    "$id": "#/properties/header/properties/totalPages",
+                    "description": "Total number of pages that compose the result",
+                    "type": "integer"
+                },
+                "timeStamp": {
+                    "$id": "#/properties/header/properties/timeStamp",
+                    "examples": [
+                        "2021-07-24T14:25:42.407Z"
+                    ],
+                    "type": "string"
+                },
+                "agent": {
+                    "$id": "#/properties/header/properties/agent",
+                    "examples": [
+                        "JRE 1.8.0_121 - Mac OS X 10.16"
+                    ],
+                    "type": "string"
+                },
+                "protocol": {
+                    "$id": "#/properties/header/properties/protocol",
+                    "default": "D2D",
+                    "description": "Name of the protocol",
+                    "examples": [
+                        "D2D"
+                    ],
+                    "enum": [
+                        "D2D"
+                    ],
+                    "type": "string"
+                },
+                "version": {
+                    "$id": "#/properties/header/properties/version",
+                    "default": "1",
+                    "description": "version of the protocol",
+                    "examples": [
+                        "1"
+                    ],
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "body": {
+            "$id": "#/properties/body",
+            "description": "Contains an encrypted string representing the requested health data",
+            "type": "string"
+        },
+        "status": {
+            "$id": "#/properties/status",
+            "default": 200,
+            "description": "Return code of the requested operation",
+            "examples": [
+                200
+            ],
+            "enum": [
+                200,
+                300,
+                400,
+                410,
+                500
+            ],
+            "type": "integer"
+        },
+        "message": {
+            "$id": "#/properties/message",
+            "description": "An optional human readable message describing the outcome of the operation",
+            "type": "string"
+        }
+    },
+    "additionalProperties": false
+}
